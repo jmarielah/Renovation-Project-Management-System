@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 session_start();
 include 'db_connection.php';
 
-//check connection
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 $email = $_POST['email'];
@@ -22,7 +21,6 @@ if($stmt->num_rows>0){
     echo "ALREADY EXIST!"; 
 
 }else{
-    //HASH THE PASSWORD
     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO users(email, password, name, role) VALUES (?,?,?,?)";
